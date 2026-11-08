@@ -1,0 +1,671 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 20px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.app-container {
+  min-height: 100vh;
+}
+
+.header {
+  background: #12304a;
+  color: white;
+  padding: 35px 20px;
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0 0 12px;
+}
+
+.header p {
+  color: #cbd5e1;
+}
+
+.main-content {
+  max-width: 1100px;
+  margin: 35px auto;
+  padding: 0 20px;
+}
+
+/* Journey form */
+
+.form-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.form-card h2,
+.results-section h2 {
+  margin-top: 0;
+  color: #637e9e;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+label {
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+input {
+  padding: 13px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  font-size: 15px;
+}
+
+input:focus {
+  outline: 2px solid #2563eb;
+  border-color: transparent;
+}
+
+button {
+  background: #2563eb;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 7px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+button:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+/* Results */
+
+.results-section {
+  margin-top: 30px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.error-message {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+/* Recommendation status */
+
+.warning-banner,
+.success-banner {
+  padding: 15px;
+  border-radius: 8px;
+  margin: 18px 0;
+  line-height: 1.5;
+}
+
+.warning-banner {
+  background: #fff7ed;
+  color: #9a3412;
+  border: 1px solid #fdba74;
+}
+
+.success-banner {
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+/* Map */
+
+.map-section {
+  margin-top: 25px;
+  scroll-margin-top: 20px;
+}
+
+.map-section h2 {
+  margin-bottom: 15px;
+}
+
+.map-wrapper {
+  width: 100%;
+  height: 500px;
+  margin-top: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #cbd5e1;
+}
+
+.route-map {
+  width: 100%;
+  height: 100%;
+}
+
+.map-empty {
+  padding: 40px;
+  text-align: center;
+  background: white;
+  border-radius: 10px;
+}
+
+.map-legend {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+}
+
+.legend-color {
+  width: 18px;
+  height: 5px;
+  border-radius: 5px;
+}
+
+/* Route cards */
+
+.route-list-heading {
+  margin-top: 35px;
+  margin-bottom: 20px;
+}
+
+.routes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.route-card {
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.route-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+}
+
+.route-card.selected {
+  border: 2px solid #2563eb;
+  background: #eff6ff;
+}
+
+.route-card.recommended {
+  border-top: 5px solid #16a34a;
+}
+
+.route-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.route-card h3 {
+  color: #2563eb;
+  margin: 0;
+}
+
+.recommended-badge {
+  background: #dcfce7;
+  color: #166534;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.route-card p {
+  line-height: 1.5;
+}
+
+/* Risk breakdown */
+
+.risk-breakdown {
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 12px 0;
+  margin-top: 15px;
+}
+
+.risk-breakdown h4 {
+  margin: 0 0 12px;
+}
+
+.risk-breakdown p {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 9px 0;
+  font-size: 14px;
+}
+
+.risk-low {
+  color: #15803d;
+}
+
+.risk-moderate {
+  color: #a16207;
+}
+
+.risk-high {
+  color: #c2410c;
+}
+
+.risk-severe {
+  color: #dc2626;
+}
+
+.risk-no-travel {
+  color: #991b1b;
+}
+
+.risk-unknown {
+  color: #64748b;
+}
+
+/* Route warnings */
+
+.route-warning,
+.route-safe {
+  padding: 11px;
+  border-radius: 7px;
+  margin-top: 14px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.danger {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+.unknown-warning {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+.route-safe {
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.coordinates-count {
+  margin-top: 15px;
+}
+
+.select-route-hint {
+  color: #64748b;
+  font-size: 12px;
+  font-style: italic;
+}
+
+/* Mobile layout */
+
+@media (max-width: 600px) {
+  .form-card {
+    padding: 20px;
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .results-section {
+    padding: 18px;
+  }
+
+  .map-wrapper {
+    height: 380px;
+  }
+
+  .routes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Weather forecast controls */
+
+.weather-map-panel {
+  margin-top: 20px;
+}
+
+.forecast-controls {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 15px;
+}
+
+.forecast-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.forecast-heading h3 {
+  margin: 0;
+}
+
+.forecast-heading span {
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.forecast-slider {
+  width: 100%;
+  margin: 5px 0 5px;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.forecast-description {
+  font-size: 13px;
+  color: #475569;
+}
+
+.forecast-notice {
+  padding: 5px;
+  border-radius: 7px;
+  background: #fff7ed;
+  color: #9a3412;
+  font-size: 13px;
+}
+
+/* Weather risk legend */
+
+.weather-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.weather-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  text-transform: capitalize;
+}
+
+.weather-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid #ffffff;
+  box-shadow: 0 0 2px #64748b;
+}
+
+.weather-popup p {
+  margin: 7px 0;
+  font-size: 13px;
+}
+
+
+/* Visual route risk distribution */
+
+.risk-bar {
+  display: flex;
+  width: 100%;
+  height: 14px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #e5e7eb;
+  margin: 14px 0 8px;
+}
+
+.risk-bar-segment {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.risk-total {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 14px;
+}
+
+.risk-percentages {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.risk-percentage-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+}
+
+.risk-percentage-item strong {
+  margin-left: auto;
+}
+
+.risk-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .risk-percentages {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Route comparison charts */
+
+.comparison-chart-section {
+  margin: 30px 0;
+}
+
+.chart-subtitle {
+  color: #64748b;
+  margin-bottom: 20px;
+  font-size: 12px;
+}
+
+.comparison-chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.comparison-chart-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.comparison-chart-card h3 {
+  margin-bottom: 22px;
+  color: #1e293b;
+}
+
+.chart-route-row {
+  margin-bottom: 20px;
+}
+
+.chart-route-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.chart-route-label strong {
+  text-align: right;
+}
+
+.chart-track {
+  height: 12px;
+  width: 100%;
+  background: #e2e8f0;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.chart-bar {
+  height: 100%;
+  background: #64748b;
+  border-radius: 20px;
+  transition: width 0.35s ease;
+}
+
+.recommended-chart-bar {
+  background: #16a34a;
+}
+
+.chart-footnote {
+  color: #64748b;
+  font-size: 13px;
+  margin-top: 16px;
+}
+
+@media (max-width: 768px) {
+  .comparison-chart-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.map-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.map-fullscreen-button {
+  position: absolute;
+  top: 5px;
+  right: 12px;
+  z-index: 1000;
+
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  line-height: 1;
+  border: none;
+  border-radius: 6px;
+
+  background: white;
+  color: #222;
+  font-size: 25px;
+  cursor: pointer;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.map-fullscreen-button:hover {
+  background: #f0f0f0;
+}
+
+.map-wrapper:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  background: white;
+}
+
+.map-wrapper:fullscreen .leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+.origin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.origin-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.origin-input-wrapper input {
+  width: 100%;
+  box-sizing: border-box;
+  padding-right: 165px;
+}
+
+.location-button {
+  position: absolute;
+  right: 10px;
+  top: 18%;
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 8px 12px;
+  border: 1px solid #2563eb;
+  border-radius: 6px;
+  background: white;
+  color: #2563eb;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.location-button:hover {
+  background: #2563eb;
+  color: white;
+}
